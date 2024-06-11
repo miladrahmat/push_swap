@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:43:32 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/11 12:38:28 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:01:34 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ void	sb(t_vec *b, bool check)
 
 void	ss(t_vec *a, t_vec *b)
 {
-	if (!sa(a, true))
-		exit(EXIT_FAILURE);
-	if (!sb(b, true))
-		exit(EXIT_FAILURE);
+	sa(a, true);
+	sb(b, true);
 	ft_printf("ss\n");
 }
