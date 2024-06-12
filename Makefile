@@ -10,10 +10,10 @@ LIBFT = ./libft/libft.a
 all: $(NAME)
 
 %.o: %.c
-		$(CC) $(CFLAGS) -c $(SRCS)
+		$(CC) -c $(CFLAGS) $?
 
 $(NAME): $(OBJS) $(LIBFT)
-		$(CC) $(CFLAGS) -o $(OBJS) $(LIBFT) $(NAME)
+		$(CC) -g $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 		@make -C libft

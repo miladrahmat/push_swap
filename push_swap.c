@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:16:10 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/11 17:16:59 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:04:26 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_sorted(t_vec *a)
 	i = 0;
 	while (i < a->len - 1)
 	{
-		if (*(int *)vec_get(a, i) > *(int *)vec_get(a, i + 1))
+		if (vec_int(a, i) > vec_int(a, i + 1))
 			return (-1);
 		else
 			i++;
@@ -29,26 +29,28 @@ int	is_sorted(t_vec *a)
 
 void	sort_three(t_vec *a)
 {
-	int	i;
-
-	i = 0;
-	while (i < 3)
+	if (a->len == 2)
 	{
-		if (*(int *)vec_get(a, 0) > *(int *)vec_get(a, 1))
+		if (vec_int(a, 0) > vec_int(a, 1))
+			sa(a, false);
+		return ;
+	}
+	while (is_sorted(a) < 0)
+	{
+		printf("\n");
+		if (vec_int(a, 2) < vec_int(a, 0) && vec_int(a, 2) < vec_int(a, 1))
+			rra(a, false);
+		else if (vec_int(a, 0) > vec_int(a, 1))
 		{
-			if (*(int *)vec_get(a, 0) > *(int *)vec_get(a, 2))
+			if (vec_int(a, 0) > vec_int(a, 2))
 				ra(a, false);
 			else
-				sa(a, true);
+				sa(a, false);
 		}
 	}
-	if (is_sorted(a) > 0)
-		return ;
-	else
-		sort_three(a);
 }
 
-int	push_swap(t_vec *a, t_vec *b)
+int	push_swap(t_vec *a)
 {
 	if (a == NULL || a->memory == NULL)
 		exit(EXIT_FAILURE);

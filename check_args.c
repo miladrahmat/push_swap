@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:35:43 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/11 18:19:47 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:00:57 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	put_to_vector(char *str, t_vec *a)
 {
 	int		nbr;
-	void	*nbrptr;
 
 	if (a == NULL)
 		return (-1);
@@ -23,8 +22,9 @@ static int	put_to_vector(char *str, t_vec *a)
 		if (vec_new(a, 1, sizeof(int)) < 0)
 			return (-1);
 	nbr = ft_atoi(str);
-	nbrptr = &nbr;
-	if (vec_push(a, nbrptr) < 0)
+	if (check_dup(a, nbr) < 0)
+		return (-1);
+	if (vec_push(a, &nbr) < 0)
 	{
 		vec_free(a);
 		return (-1);
@@ -32,56 +32,46 @@ static int	put_to_vector(char *str, t_vec *a)
 	return (1);
 }
 
-static int	check_dup(char **str)
+int	check_dup(t_vec *a, int nbr)
 {
-	size_t	len;
 	size_t	i;
-	size_t	j;
 
-	len = ft_strlen(str);
-	if (len == 1)
-		return (1);
-	j = 1;
-	while (j < len)
+	i = 0;
+	while (i < a->len)
 	{
-		i = 0;
-		while (i < len)
+		if (nbr == vec_int(a, i) || nbr == 2147483647 || nbr == -2147483648)
 		{
-			if (str[i] == str[j])
-				return (-1);
-			else
-				i++;
+			ft_putstr_fd("Error\n", 2);
+			return (-1);
 		}
-		j++;
+		else
+			i++;
 	}
 	return (1);
 }
 
-void	check_args(char **args, t_vec *a)
+int	check_args(char **args, t_vec *a, size_t index)
 {
 	size_t	len;
-	size_t	arr_i;
 	size_t	w_i;
 
-	if (check_dup(args) < 0)
-		exit(EXIT_FAILURE);
-	arr_i = 1;
-	while (args[arr_i] != NULL)
+	while (args[index] != NULL)
 	{
 		w_i = 0;
-		len = ft_strlen(args[arr_i]);
+		len = ft_strlen(args[index]);
 		while (w_i < len)
 		{
-			if (args[arr_i][w_i] < '0' || args[arr_i][w_i] > '9')
+			if (args[index][w_i] < '0' || args[index][w_i] > '9')
 			{
-				ft_putstr_fd("Error", 2);
-				exit(EXIT_FAILURE);
+				ft_putstr_fd("Error\n", 2);
+				return (-1);
 			}
 			else
 				w_i++;
 		}
-		if (put_to_vector(args[arr_i], a) < 0)
-			exit(EXIT_FAILURE);
-		arr_i++;
+		if (put_to_vector(args[index], a) < 0)
+			return (-1);
+		index++;
 	}
+	return (1);
 }

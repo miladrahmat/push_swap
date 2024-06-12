@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:30:27 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/10 18:37:51 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:03:57 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,11 @@ int	vec_sort(t_vec *src, int (*f)(void *, void *))
 			index++;
 	}
 	return (1);
+}
+
+int	vec_int(t_vec *src, size_t index)
+{
+	if (src == NULL || src->memory == NULL)
+		return (-1);
+	return (*(int *)vec_get(src, index));
 }
