@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:16:10 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/13 15:26:57 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:49:31 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,8 @@ void	sort_five(t_vec *a, t_vec *b)
 {
 	t_stack	check;
 
-	if (a->len == 4)
-		pb(a, b);
-	else
-	{
-		pb(a, b);
-		pb(a, b);
-	}
+	pb(a, b);
+	pb(a, b);
 	sort_three(a);
 	while (b->len > 0)
 	{
@@ -71,7 +66,7 @@ void	sort_five(t_vec *a, t_vec *b)
 		if (vec_int(b, 0) > check.nbr && (size_t)check.index == a->len - 1)
 		{
 			pa(a, b);
-			rra(a, false);
+			ra(a, false);
 		}
 		else if (vec_int(b, 0) < vec_int(a, 0))
 			pa(a, b);
@@ -84,7 +79,7 @@ void	sort_five(t_vec *a, t_vec *b)
 
 void	sort_three(t_vec *a)
 {
-	if (a->len == 2)
+	if (a->len == 2) 
 	{
 		if (vec_int(a, 0) > vec_int(a, 1))
 			sa(a, false);
@@ -115,18 +110,16 @@ int	push_swap(t_vec *a, t_vec *b)
 {
 	if (a == NULL || a->memory == NULL)
 		exit(EXIT_FAILURE);
+	if (vec_new(b, 1, sizeof(int)) < 0)
+	{
+		vec_free(a);
+		exit(EXIT_FAILURE);
+	}
 	if (a->len == 1 || is_sorted(a) > 0)
 		return (0);
 	if (a->len <= 3)
 		sort_three(a);
 	else if (a->len <= 5)
-	{
-		if (vec_new(b, 1, sizeof(int)) < 0)
-		{
-			vec_free(a);
-			exit(EXIT_FAILURE);
-		}
 		sort_five(a, b);
-	}
 	return (0);
 }
