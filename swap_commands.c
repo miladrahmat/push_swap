@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:43:32 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/11 15:01:34 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:16:56 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	sa(t_vec *a, bool check)
 	void	*ind0ptr;
 
 	if (a == NULL || a->memory == NULL)
-		exit(EXIT_FAILURE);
-	ind0 = *(int *)vec_get(a, 0);
+		return ;
+	ind0 = vec_int(a, 0);
 	ind0ptr = &ind0;
 	if (vec_remove(a, 0) < 0)
-		exit(EXIT_FAILURE);
+		return ;
 	if (vec_insert(a, ind0ptr, 1) < 0)
-		exit(EXIT_FAILURE);
+		return ;
 	if (check == false)
 		ft_printf("sa\n");
 }
@@ -35,13 +35,13 @@ void	sb(t_vec *b, bool check)
 	void	*ind0ptr;
 
 	if (b == NULL || b->memory == NULL)
-		exit(EXIT_FAILURE);
-	ind0 = *(int *)vec_get(b, 0);
+		return ;
+	ind0 = vec_int(b, 0);
 	ind0ptr = &ind0;
 	if (vec_remove(b, 0) < 0)
-		exit(EXIT_FAILURE);
+		return ;
 	if (vec_insert(b, ind0ptr, 1) < 0)
-		exit(EXIT_FAILURE);
+		return ;
 	if (check == false)
 		ft_printf("sb\n");
 }

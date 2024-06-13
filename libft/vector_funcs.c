@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:46:26 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/07 15:18:43 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:02:59 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,15 @@ int	vec_copy(t_vec *dst, t_vec *src)
 
 int	vec_resize(t_vec *src, size_t target_len)
 {
-	void	*temp;
+	t_vec	temp;
 
 	if (src == NULL)
 		return (-1);
-	temp = src->memory;
-	src->memory = malloc(target_len * src->elem_size);
-	if (src->memory == NULL)
-	{
-		src->memory = temp;
+	if (vec_new(&temp, target_len, src->elem_size) < 0)
 		return (-1);
-	}
-	ft_memmove(src->memory, temp, src->alloc_size);
-	src->alloc_size = src->len * target_len;
-	free(temp);
+	ft_memmove(temp.memory, src->memory, src->alloc_size);
+	temp.len = src->len;
+	vec_free(src);
+	*src = temp;
 	return (1);
 }

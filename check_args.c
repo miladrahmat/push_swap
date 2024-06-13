@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:35:43 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/12 15:00:57 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:01:17 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ int	check_dup(t_vec *a, int nbr)
 			ft_putstr_fd("Error\n", 2);
 			return (-1);
 		}
-		else
-			i++;
+		i++;
 	}
 	return (1);
 }

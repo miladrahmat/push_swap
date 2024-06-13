@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:58:54 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/12 15:00:59 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:13:04 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ int	main(int argc, char **argv)
 		}
 	}
 	else if (check_args(argv, &a, 1) < 0)
+	{
+		if (a.memory != NULL)
+			vec_free(&a);
 		exit(EXIT_FAILURE);
+	}
 	push_swap(&a);
 	vec_free(&a);
 	exit(EXIT_SUCCESS);

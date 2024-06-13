@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:41:41 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/11 12:49:40 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:16:50 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	rra(t_vec *a, bool check)
 	void	*ind_lastptr;
 
 	if (a == NULL || a->memory == NULL)
-		exit(EXIT_FAILURE);
-	ind_last = *(int *)vec_get(a, a->len - 1);
+		return ;
+	ind_last = vec_int(a, a->len - 1);
 	ind_lastptr = &ind_last;
 	if (vec_remove(a, a->len - 1) < 0)
-		exit(EXIT_FAILURE);
+		return ;
 	if (vec_insert(a, ind_lastptr, 0) < 0)
-		exit(EXIT_FAILURE);
+		return ;
 	if (check == false)
 		ft_printf("rra\n");
 }
@@ -35,13 +35,13 @@ void	rrb(t_vec *b, bool check)
 	void	*ind_lastptr;
 
 	if (b == NULL || b->memory == NULL)
-		exit(EXIT_FAILURE);
-	ind_last = *(int *)vec_get(b, b->len - 1);
+		return ;
+	ind_last = vec_int(b, b->len - 1);
 	ind_lastptr = &ind_last;
 	if (vec_remove(b, b->len - 1) < 0)
-		exit(EXIT_FAILURE);
+		return ;
 	if (vec_insert(b, ind_lastptr, 0) < 0)
-		exit(EXIT_FAILURE);
+		return ;
 	if (check == false)
 		ft_printf("rrb\n");
 }

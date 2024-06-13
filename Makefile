@@ -13,7 +13,7 @@ all: $(NAME)
 		$(CC) -c $(CFLAGS) $?
 
 $(NAME): $(OBJS) $(LIBFT)
-		$(CC) -g $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 		@make -C libft
