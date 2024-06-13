@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:46:26 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/13 14:02:59 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:04:29 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ void	vec_free(t_vec *src)
 	src->elem_size = 0;
 	src->len = 0;
 	src->alloc_size = 0;
-	free(src->memory);
-	src->memory = NULL;
+	if (src->memory != NULL)
+	{
+		free(src->memory);
+		src->memory = NULL;
+	}
 }
 
 int	vec_from(t_vec *dst, void *src, size_t len, size_t elem_size)

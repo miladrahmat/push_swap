@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:16:10 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/13 12:17:10 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:26:57 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,64 @@ int	is_sorted(t_vec *a)
 	{
 		if (vec_int(a, i) > vec_int(a, i + 1))
 			return (-1);
+		i++;
+	}
+	return (1);
+}
+
+int	find_biggest(t_vec *a)
+{
+	size_t	i;
+	int		nbr;
+
+	i = 0;
+	nbr = -2147483648;
+	while (i < a->len)
+	{
+		if (vec_int(a, i) > nbr)
+			nbr = vec_int(a, i);
 		else
 			i++;
 	}
-	return (1);
+	i = 0;
+	while (i < a->len)
+	{
+		if (vec_int(a, i) == nbr)
+			return (i);
+		else
+			i++;
+	}
+	return (0);
+}
+
+void	sort_five(t_vec *a, t_vec *b)
+{
+	t_stack	check;
+
+	if (a->len == 4)
+		pb(a, b);
+	else
+	{
+		pb(a, b);
+		pb(a, b);
+	}
+	sort_three(a);
+	while (b->len > 0)
+	{
+		check.index = find_biggest(a);
+		check.nbr = vec_int(a, check.index);
+		if (vec_int(b, 0) > check.nbr && (size_t)check.index == a->len - 1)
+		{
+			pa(a, b);
+			rra(a, false);
+		}
+		else if (vec_int(b, 0) < vec_int(a, 0))
+			pa(a, b);
+		else
+			ra(a, false);
+	}
+	while (is_sorted(a) < 0)
+		ra(a, false);
 }
 
 void	sort_three(t_vec *a)
@@ -57,7 +111,7 @@ void	sort_three(t_vec *a)
 	}
 }
 
-int	push_swap(t_vec *a)
+int	push_swap(t_vec *a, t_vec *b)
 {
 	if (a == NULL || a->memory == NULL)
 		exit(EXIT_FAILURE);
@@ -65,7 +119,14 @@ int	push_swap(t_vec *a)
 		return (0);
 	if (a->len <= 3)
 		sort_three(a);
-	/* else if (a->len <= 5)
-		sort_five(a, b); */
+	else if (a->len <= 5)
+	{
+		if (vec_new(b, 1, sizeof(int)) < 0)
+		{
+			vec_free(a);
+			exit(EXIT_FAILURE);
+		}
+		sort_five(a, b);
+	}
 	return (0);
 }

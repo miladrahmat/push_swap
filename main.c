@@ -6,11 +6,12 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:58:54 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/13 12:13:04 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:18:53 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 static void	split_free(char **arr)
 {
@@ -32,7 +33,8 @@ static void	split_free(char **arr)
 int	main(int argc, char **argv)
 {
 	t_vec	a;
-	//t_vec	b;
+	t_vec	b;
+	size_t	i;
 
 	if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
 		exit(EXIT_FAILURE);
@@ -53,7 +55,15 @@ int	main(int argc, char **argv)
 			vec_free(&a);
 		exit(EXIT_FAILURE);
 	}
-	push_swap(&a);
+	push_swap(&a, &b);
+	i = 0;
+	while (i < a.len)
+	{
+		printf("%d ", vec_int(&a, i));
+		i++;
+	}
+	printf("\n");
 	vec_free(&a);
+	vec_free(&b);
 	exit(EXIT_SUCCESS);
 }
