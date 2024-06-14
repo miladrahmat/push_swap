@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:18:18 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/13 15:14:47 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:28:20 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 # include "./libft/libft.h"
 # include "./libft/vector.h"
 
-typedef struct s_stack
+typedef struct s_sort
 {
-	int				nbr;
-	int				index;
-	int				push_cost;
-	bool			above_median;
-	bool			cheapest;
-	struct s_stack	*target_node;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}	t_stack;
+	int		nbr;
+	size_t	index;
+	size_t	target_index;
+	int		push_cost;
+	bool	above_median;
+	bool	cheapest;
+}	t_sort;
 
 void	sa(t_vec *a, bool check);
 void	sb(t_vec *b, bool check);
@@ -43,6 +41,7 @@ void	sort_three(t_vec *a);
 int		push_swap(t_vec *a, t_vec *b);
 int		check_args(char **args, t_vec *a, size_t index);
 int		check_dup(t_vec *a, int nbr);
-int		find_biggest(t_vec *a);
+size_t	find_biggest(t_vec *vec);
+size_t	find_smallest(t_vec *vec);
 
 #endif

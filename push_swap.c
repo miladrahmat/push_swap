@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:16:10 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/13 17:49:31 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:17:50 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ int	is_sorted(t_vec *a)
 	return (1);
 }
 
-int	find_biggest(t_vec *a)
+size_t	find_biggest(t_vec *vec)
 {
 	size_t	i;
 	int		nbr;
 
 	i = 0;
 	nbr = -2147483648;
-	while (i < a->len)
+	while (i < vec->len)
 	{
-		if (vec_int(a, i) > nbr)
-			nbr = vec_int(a, i);
+		if (vec_int(vec, i) > nbr)
+			nbr = vec_int(vec, i);
 		else
 			i++;
 	}
 	i = 0;
-	while (i < a->len)
+	while (i < vec->len)
 	{
-		if (vec_int(a, i) == nbr)
+		if (vec_int(vec, i) == nbr)
 			return (i);
 		else
 			i++;
@@ -54,16 +54,16 @@ int	find_biggest(t_vec *a)
 
 void	sort_five(t_vec *a, t_vec *b)
 {
-	t_stack	check;
+	t_sort	check;
 
-	pb(a, b);
-	pb(a, b);
+	while (a->len > 3)
+		pb(a, b);
 	sort_three(a);
 	while (b->len > 0)
 	{
 		check.index = find_biggest(a);
 		check.nbr = vec_int(a, check.index);
-		if (vec_int(b, 0) > check.nbr && (size_t)check.index == a->len - 1)
+		if (vec_int(b, 0) > check.nbr && check.index == a->len - 1)
 		{
 			pa(a, b);
 			ra(a, false);
@@ -74,12 +74,17 @@ void	sort_five(t_vec *a, t_vec *b)
 			ra(a, false);
 	}
 	while (is_sorted(a) < 0)
-		ra(a, false);
+	{
+		if (find_biggest(a) < (a->len -1) / 2)
+			ra(a, false);
+		else
+			rra(a, false);
+	}
 }
 
 void	sort_three(t_vec *a)
 {
-	if (a->len == 2) 
+	if (a->len == 2)
 	{
 		if (vec_int(a, 0) > vec_int(a, 1))
 			sa(a, false);
