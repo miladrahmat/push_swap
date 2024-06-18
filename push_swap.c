@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:16:10 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/17 17:29:29 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:47:56 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,42 +27,38 @@ int	is_sorted(t_vec *a)
 	return (1);
 }
 
-size_t	find_biggest(t_vec *vec)
-{
-	size_t	i;
-	int		nbr;
 
-	i = 0;
-	nbr = INT_MIN;
-	while (i < vec->len)
+void	sort_many(t_vec *a, t_vec *b)
+{
+	t_sort	info_b;
+	t_sort	info_a;
+
+	pb(a, b);
+	pb(a, b);
+	if (vec_int(b, 0) < vec_int(b, 1))
+		sb(b, false);
+	while (a->len > 3)
 	{
-		if (vec_int(vec, i) > nbr)
-			nbr = vec_int(vec, i);
-		i++;
+		get_info_b(a, b, &info_b);
+		move_to_b(a, b, &info_b);
 	}
-	i = 0;
-	while (i < vec->len)
+	sort_three(a);
+	while (b->len > 0)
 	{
-		if (vec_int(vec, i) == nbr)
-			return (i);
-		else
-			i++;
+		get_info_a(a, b, &info_a);
+		move_to_a(a, b, &info_a);
 	}
-	return (0);
+	sort_rest(a);
 }
 
 void	sort_five(t_vec *a, t_vec *b)
 {
-	t_sort	check;
-
 	pb(a, b);
 	pb(a, b);
 	sort_three(a);
 	while (b->len > 0)
 	{
-		check.index = find_biggest(a);
-		check.nbr = vec_int(a, check.index);
-		if (vec_int(b, 0) > check.nbr && check.index == a->len - 1)
+		if (vec_int(b, 0) > find_biggest_nbr(a) && find_biggest_ind(a) == a->len - 1)
 		{
 			pa(a, b);
 			ra(a, false);
@@ -72,13 +68,7 @@ void	sort_five(t_vec *a, t_vec *b)
 		else
 			ra(a, false);
 	}
-	while (is_sorted(a) < 0)
-	{
-		if (find_biggest(a) < (a->len -1) / 2)
-			ra(a, false);
-		else
-			rra(a, false);
-	}
+	sort_rest(a);
 }
 
 void	sort_three(t_vec *a)
@@ -112,19 +102,12 @@ void	sort_three(t_vec *a)
 
 int	push_swap(t_vec *a, t_vec *b)
 {
-	if (a == NULL || a->memory == NULL)
-		exit(EXIT_FAILURE);
-	if (vec_new(b, 1, sizeof(int)) < 0)
-	{
-		vec_free(a);
-		exit(EXIT_FAILURE);
-	}
 	if (a->len == 1 || is_sorted(a) > 0)
 		return (0);
 	if (a->len <= 3)
 		sort_three(a);
 	else if (a->len <= 5)
-		sort_five(a, b);
+		sort_many(a, b);
 	else
 		sort_many(a, b);
 	return (0);

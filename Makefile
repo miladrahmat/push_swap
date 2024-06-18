@@ -1,7 +1,8 @@
 NAME = push_swap
 SRCS = \
 	main.c check_args.c push_commands.c swap_commands.c rotate_commands.c \
-	r_rotate_commands.c push_swap.c
+	r_rotate_commands.c push_swap.c get_info.c helper_funcs.c move_to_a.c \
+	move_to_b.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror

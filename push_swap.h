@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:18:18 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/17 17:39:42 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:00:29 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,22 @@
 
 typedef struct s_sort
 {
-	int		nbr;
-	size_t	index;
-	size_t	target_index;
-	size_t	push_cost;
+	size_t	temp_ind_a;
+	size_t	temp_ind_b;
+	size_t	index_a;
+	size_t	index_b;
+	size_t	temp_cost_a;
+	size_t	temp_cost_b;
+	size_t	temp_total;
+	size_t	push_cost_a;
+	size_t	push_cost_b;
+	size_t	total_cost;
 	bool	cheapest;
-	bool	above_median;
+	bool	above_median_a;
+	bool	above_median_b;
 }	t_sort;
 
+//commands
 void	sa(t_vec *a, bool check);
 void	sb(t_vec *b, bool check);
 void	ss(t_vec *a, t_vec *b);
@@ -36,16 +44,27 @@ void	rr(t_vec *a, t_vec *b);
 void	rra(t_vec *a, bool check);
 void	rrb(t_vec *b, bool check);
 void	rrr(t_vec *a, t_vec *b);
-int		is_sorted(t_vec *a);
-void	sort_three(t_vec *a);
-int		push_swap(t_vec *a, t_vec *b);
+
+//error check
 int		check_args(char **args, t_vec *a, size_t index);
 int		check_dup(t_vec *a, int nbr);
-size_t	find_biggest(t_vec *vec);
-size_t	find_smallest(t_vec *vec);
-void	find_target(t_vec *a, int nbr, size_t index);
-void	calculate_cost(t_vec *vec, t_sort *info);
-void	find_cheapest(t_vec *vec, t_sort *info);
+
+//sorting
+int		is_sorted(t_vec *a);
+void	sort_three(t_vec *a);
+void	sort_five(t_vec *a, t_vec *b);
 void	sort_many(t_vec *a, t_vec *b);
+int		push_swap(t_vec *a, t_vec *b);
+void	move_to_b(t_vec *a, t_vec *b, t_sort *info);
+void	move_to_a(t_vec *a, t_vec *b, t_sort *info);
+void	sort_rest(t_vec *a);
+
+//helper funcs
+size_t	find_biggest_ind(t_vec *vec);
+size_t	find_smallest_ind(t_vec *vec);
+int		find_smallest_nbr(t_vec *vec);
+int 	find_biggest_nbr(t_vec *vec);
+void	get_info_b(t_vec *a, t_vec *b, t_sort *info);
+void	get_info_a(t_vec *a, t_vec *b, t_sort *info);
 
 #endif
