@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:16:10 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/14 15:17:50 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/17 17:29:29 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ size_t	find_biggest(t_vec *vec)
 	int		nbr;
 
 	i = 0;
-	nbr = -2147483648;
+	nbr = INT_MIN;
 	while (i < vec->len)
 	{
 		if (vec_int(vec, i) > nbr)
 			nbr = vec_int(vec, i);
-		else
-			i++;
+		i++;
 	}
 	i = 0;
 	while (i < vec->len)
@@ -56,8 +55,8 @@ void	sort_five(t_vec *a, t_vec *b)
 {
 	t_sort	check;
 
-	while (a->len > 3)
-		pb(a, b);
+	pb(a, b);
+	pb(a, b);
 	sort_three(a);
 	while (b->len > 0)
 	{
@@ -126,5 +125,7 @@ int	push_swap(t_vec *a, t_vec *b)
 		sort_three(a);
 	else if (a->len <= 5)
 		sort_five(a, b);
+	else
+		sort_many(a, b);
 	return (0);
 }
