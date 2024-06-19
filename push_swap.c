@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:16:10 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/18 16:47:56 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:35:50 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	is_sorted(t_vec *a)
 	return (1);
 }
 
-
 void	sort_many(t_vec *a, t_vec *b)
 {
 	t_sort	info_b;
@@ -39,34 +38,16 @@ void	sort_many(t_vec *a, t_vec *b)
 		sb(b, false);
 	while (a->len > 3)
 	{
+		reset_info(&info_b);
 		get_info_b(a, b, &info_b);
 		move_to_b(a, b, &info_b);
 	}
 	sort_three(a);
 	while (b->len > 0)
 	{
+		reset_info(&info_a);
 		get_info_a(a, b, &info_a);
 		move_to_a(a, b, &info_a);
-	}
-	sort_rest(a);
-}
-
-void	sort_five(t_vec *a, t_vec *b)
-{
-	pb(a, b);
-	pb(a, b);
-	sort_three(a);
-	while (b->len > 0)
-	{
-		if (vec_int(b, 0) > find_biggest_nbr(a) && find_biggest_ind(a) == a->len - 1)
-		{
-			pa(a, b);
-			ra(a, false);
-		}
-		else if (vec_int(b, 0) < vec_int(a, 0))
-			pa(a, b);
-		else
-			ra(a, false);
 	}
 	sort_rest(a);
 }
@@ -106,8 +87,6 @@ int	push_swap(t_vec *a, t_vec *b)
 		return (0);
 	if (a->len <= 3)
 		sort_three(a);
-	else if (a->len <= 5)
-		sort_many(a, b);
 	else
 		sort_many(a, b);
 	return (0);

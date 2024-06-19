@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:41:44 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/18 18:29:34 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:46:48 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,15 @@ static void	find_target_b(t_vec *b, int nbr, t_sort *info)
 	size_t	ind;
 	int		check;
 
-	check = INT_MAX;
+	check = INT_MIN;
 	ind = 0;
-	if (nbr < find_smallest_nbr(b))
+	if (nbr > find_biggest_nbr(b))
 		info->temp_ind_b = find_smallest_ind(b);
-	else if (nbr > find_biggest_nbr(b))
-		info->temp_ind_b = find_biggest_ind(b);
 	else
 	{
 		while (ind < b->len)
 		{
-			if (vec_int(b, ind) > nbr && vec_int(b, ind) < check)
+			if (vec_int(b, ind) < nbr && vec_int(b, ind) > check)
 				check = vec_int(b, ind);
 			ind++;
 		}
@@ -72,17 +70,15 @@ static void	find_target_a(t_vec *a, int nbr, t_sort *info)
 	size_t	ind;
 	int		check;
 
-	check = INT_MIN;
+	check = INT_MAX;
 	ind = 0;
-	if (nbr < find_smallest_nbr(a))
+	if (nbr > find_biggest_nbr(a))
 		info->temp_ind_a = find_smallest_ind(a);
-	else if (nbr > find_biggest_nbr(a))
-		info->temp_ind_a = find_biggest_ind(a);
 	else
 	{
 		while (ind < a->len)
 		{
-			if (vec_int(a, ind) < nbr && vec_int(a, ind) > check)
+			if (vec_int(a, ind) > nbr && vec_int(a, ind) < check)
 				check = vec_int(a, ind);
 			ind++;
 		}
@@ -110,11 +106,11 @@ void	get_info_b(t_vec *a, t_vec *b, t_sort *info)
 			info->push_cost_a = info->temp_cost_a;
 			info->push_cost_b = info->temp_cost_b;
 			info->total_cost = info->temp_total;
-			if (info->index_a < (a->len - 1) / 2)
+			if (info->index_a <= (a->len - 1) / 2)
 				info->above_median_a = true;
 			else
 				info->above_median_a = false;
-			if (info->index_b < (b->len - 1) / 2)
+			if (info->index_b <= (b->len - 1) / 2)
 				info->above_median_b = true;
 			else
 				info->above_median_b = false;
@@ -125,7 +121,7 @@ void	get_info_b(t_vec *a, t_vec *b, t_sort *info)
 
 void	get_info_a(t_vec *a, t_vec *b, t_sort *info)
 {
-		info->temp_ind_b = 0;
+	info->temp_ind_b = 0;
 	while (info->temp_ind_b < b->len)
 	{
 		find_target_a(a, vec_int(b, info->temp_ind_b), info);
@@ -137,11 +133,11 @@ void	get_info_a(t_vec *a, t_vec *b, t_sort *info)
 			info->push_cost_a = info->temp_cost_a;
 			info->push_cost_b = info->temp_cost_b;
 			info->total_cost = info->temp_total;
-			if (info->index_a < (a->len - 1) / 2)
+			if (info->index_a <= (a->len - 1) / 2)
 				info->above_median_a = true;
 			else
 				info->above_median_a = false;
-			if (info->index_b < (b->len - 1) / 2)
+			if (info->index_b <= (b->len - 1) / 2)
 				info->above_median_b = true;
 			else
 				info->above_median_b = false;

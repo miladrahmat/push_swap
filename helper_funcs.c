@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:15:53 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/18 14:16:04 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:47:32 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,26 @@ int	find_smallest_nbr(t_vec *vec)
 	return (nbr);
 }
 
-int find_biggest_nbr(t_vec *vec)
+int	find_biggest_nbr(t_vec *vec)
 {
 	int	nbr;
 
 	nbr = vec_int(vec, find_biggest_ind(vec));
 	return (nbr);
+}
+
+void	reset_info(t_sort *info)
+{
+	info->temp_ind_a = 0;
+	info->temp_ind_b = 0;
+	info->index_a = 0;
+	info->index_b = 0;
+	info->temp_cost_a = 0;
+	info->temp_cost_b = 0;
+	info->temp_total = 0;
+	info->push_cost_a = 0;
+	info->push_cost_b = 0;
+	info->total_cost = SIZE_MAX;
+	info->above_median_a = false;
+	info->above_median_b = false;
 }
