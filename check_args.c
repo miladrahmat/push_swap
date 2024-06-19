@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:35:43 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/19 13:33:30 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:26:41 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	put_to_vector(char *str, t_vec *a)
 	res = (int)nbr;
 	if ((long)res != nbr)
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putendl_fd("Error", 2);
 		return (-1);
 	}
 	if (vec_push(a, &res) < 0)
@@ -42,10 +42,10 @@ int	check_dup(t_vec *a, long nbr)
 		return (1);
 	while (i < a->len)
 	{
-		if (nbr == (long)vec_int(a, i) || nbr >= 2147483647 \
-			|| nbr <= -2147483648)
+		if (nbr == (long)vec_int(a, i) || nbr > 2147483647 \
+			|| nbr < -2147483648)
 		{
-			ft_putstr_fd("Error\n", 2);
+			ft_putendl_fd("Error", 2);
 			return (-1);
 		}
 		i++;
@@ -69,7 +69,7 @@ int	check_args(char **args, t_vec *a, size_t index)
 					&& len == 1) || ((args[index][w_i] < '0' \
 						|| args[index][w_i] > '9') && w_i != 0))
 			{
-				ft_putstr_fd("Error\n", 2);
+				ft_putendl_fd("Error", 2);
 				return (-1);
 			}
 			else
