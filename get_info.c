@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:41:44 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/19 12:46:48 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/20 10:52:39 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void	find_target_b(t_vec *b, int nbr, t_sort *info)
 
 	check = INT_MIN;
 	ind = 0;
-	if (nbr > find_biggest_nbr(b))
-		info->temp_ind_b = find_smallest_ind(b);
+	if (nbr < find_smallest_nbr(b))
+		info->temp_ind_b = find_biggest_ind(b);
 	else
 	{
 		while (ind < b->len)

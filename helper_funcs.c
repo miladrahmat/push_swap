@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:15:53 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/19 12:47:32 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/20 11:12:10 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ size_t	find_smallest_ind(t_vec *vec)
 
 	i = 0;
 	nbr = INT_MAX;
-	while (i < vec->len - 1)
+	while (i < vec->len)
 	{
 		if (vec_int(vec, i) < nbr)
 			nbr = vec_int(vec, i);
 		i++;
 	}
 	i = 0;
-	while (i < vec->len - 1)
+	while (i < vec->len)
 	{
 		if (nbr == vec_int(vec, i))
 			return (i);
@@ -84,7 +84,7 @@ void	reset_info(t_sort *info)
 	info->index_b = 0;
 	info->temp_cost_a = 0;
 	info->temp_cost_b = 0;
-	info->temp_total = 0;
+	info->temp_total = SIZE_MAX;
 	info->push_cost_a = 0;
 	info->push_cost_b = 0;
 	info->total_cost = SIZE_MAX;
