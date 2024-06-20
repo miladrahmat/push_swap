@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:35:43 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/19 16:26:41 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:03:36 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ int	check_dup(t_vec *a, long nbr)
 		return (1);
 	while (i < a->len)
 	{
-		if (nbr == (long)vec_int(a, i) || nbr > 2147483647 \
-			|| nbr < -2147483648)
+		if (nbr == (long)vec_int(a, i) || nbr > INT_MAX || nbr < INT_MIN)
 		{
 			ft_putendl_fd("Error", 2);
 			return (-1);
@@ -64,7 +63,7 @@ int	check_args(char **args, t_vec *a, size_t index)
 		len = ft_strlen(args[index]);
 		while (w_i < len)
 		{
-			if (((args[index][w_i] < '0' || args[index][w_i] > '9') \
+			if (((args[index][0] < '0' || args[index][0] > '9') \
 				&& args[index][0] != '-') || (args[index][0] == '-' \
 					&& len == 1) || ((args[index][w_i] < '0' \
 						|| args[index][w_i] > '9') && w_i != 0))
