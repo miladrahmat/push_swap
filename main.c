@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:58:54 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/19 16:24:28 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/20 12:49:23 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ static int	check_errors(int argc, char **argv, t_vec *a)
 	char **arr;
 
 	if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
-	{
-		ft_putendl_fd("Error", 2);
 		return (-1);
-	}
 	else if (argc == 2)
 	{
 		arr = ft_split(argv[1], ' ');
