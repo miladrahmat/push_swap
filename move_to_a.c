@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:19:57 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/19 13:57:50 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:58:07 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	move_to_a(t_vec *a, t_vec *b, t_sort *info)
 
 void	sort_rest(t_vec *a)
 {
-	if (find_biggest_ind(a) <= (a->len - 1) / 2)
+	if (find_smallest_ind(a) <= (a->len - 1) / 2)
 		while (is_sorted(a) < 0)
 			ra(a, false);
 	else
