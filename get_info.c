@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:41:44 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/20 10:52:39 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:31:19 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@ static void	calculate_cost(t_vec *a, t_vec *b, t_sort *info)
 		info->temp_cost_b = b->len - info->temp_ind_b;
 	if (info->temp_cost_a == info->temp_cost_b)
 		info->temp_total = info->temp_cost_a;
-	else
+	else if ((info->temp_ind_a <= median_a && info->temp_ind_b <= median_b) \
+		|| (info->temp_ind_a > median_a && info->temp_ind_b > median_b))
 	{
 		if (info->temp_cost_a > info->temp_cost_b)
 			info->temp_total = info->temp_cost_a;
 		else
 			info->temp_total = info->temp_cost_b;
 	}
+	else
+		info->temp_total = info->temp_cost_a + info->temp_cost_b;
 }
 
 static void	find_target_b(t_vec *b, int nbr, t_sort *info)
