@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:16:10 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/20 15:37:17 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:43:02 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	sort_many(t_vec *a, t_vec *b)
 	t_sort	info_b;
 	t_sort	info_a;
 
-	pb(a, b);
-	pb(a, b);
+	pb(a, b, false);
+	pb(a, b, false);
 	if (vec_int(b, 0) < vec_int(b, 1))
 		sb(b, false);
 	while (a->len > 3)

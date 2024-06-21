@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:43:32 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/13 12:16:56 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:37:27 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ void	sb(t_vec *b, bool check)
 		ft_printf("sb\n");
 }
 
-void	ss(t_vec *a, t_vec *b)
+void	ss(t_vec *a, t_vec *b, bool check)
 {
 	sa(a, true);
 	sb(b, true);
-	ft_printf("ss\n");
+	if (check == false)
+		ft_printf("ss\n");
 }

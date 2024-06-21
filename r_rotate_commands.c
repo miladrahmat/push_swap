@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   r_rotate_commands.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:41:41 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/13 12:16:50 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:34:36 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ void	rrb(t_vec *b, bool check)
 		ft_printf("rrb\n");
 }
 
-void	rrr(t_vec *a, t_vec *b)
+void	rrr(t_vec *a, t_vec *b, bool check)
 {
 	rra(a, true);
 	rrb(b, true);
-	ft_printf("rrr\n");
+	if (check == false)
+		ft_printf("rrr\n");
 }

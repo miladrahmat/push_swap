@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:26:18 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/13 15:01:37 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:38:16 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb(t_vec *a, t_vec *b)
+void	pb(t_vec *a, t_vec *b, bool check)
 {
 	int		ind0;
 	void	*ind0ptr;
@@ -30,10 +30,11 @@ void	pb(t_vec *a, t_vec *b)
 		return ;
 	if (vec_insert(b, ind0ptr, 0) < 0)
 		return ;
-	ft_printf("pb\n");
+	if (check == false)	
+		ft_printf("pb\n");
 }
 
-void	pa(t_vec *a, t_vec *b)
+void	pa(t_vec *a, t_vec *b, bool check)
 {
 	int		ind0;
 	void	*ind0ptr;
@@ -51,5 +52,6 @@ void	pa(t_vec *a, t_vec *b)
 		return ;
 	if (vec_insert(a, ind0ptr, 0) < 0)
 		return ;
-	ft_printf("pa\n");
+	if (check == false)
+		ft_printf("pa\n");
 }

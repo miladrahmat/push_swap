@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_to_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:19:57 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/20 15:58:07 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:39:54 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	rotate_a(t_vec *a, t_vec *b, t_sort *info)
 	{
 		while (info->push_cost_b-- > 0)
 		{
-			rr(a, b);
+			rr(a, b, false);
 			info->push_cost_a--;
 		}
 		while (info->push_cost_a-- > 0)
@@ -29,7 +29,7 @@ static void	rotate_a(t_vec *a, t_vec *b, t_sort *info)
 	{
 		while (info->push_cost_a-- > 0)
 		{
-			rr(a, b);
+			rr(a, b, false);
 			info->push_cost_b--;
 		}
 		while (info->push_cost_b-- > 0)
@@ -37,8 +37,8 @@ static void	rotate_a(t_vec *a, t_vec *b, t_sort *info)
 	}
 	else if (info->push_cost_a == info->push_cost_b)
 		while (info->push_cost_a-- > 0 && info->push_cost_b-- > 0)
-			rr(a, b);
-	pa(a, b);
+			rr(a, b, false);
+	pa(a, b, false);
 }
 
 static void	rev_rotate_a(t_vec *a, t_vec *b, t_sort *info)
@@ -47,7 +47,7 @@ static void	rev_rotate_a(t_vec *a, t_vec *b, t_sort *info)
 	{
 		while (info->push_cost_b-- > 0)
 		{
-			rrr(a, b);
+			rrr(a, b, false);
 			info->push_cost_a--;
 		}
 		while (info->push_cost_a-- > 0)
@@ -57,7 +57,7 @@ static void	rev_rotate_a(t_vec *a, t_vec *b, t_sort *info)
 	{
 		while (info->push_cost_a-- > 0)
 		{
-			rrr(a, b);
+			rrr(a, b, false);
 			info->push_cost_b--;
 		}
 		while (info->push_cost_b-- > 0)
@@ -65,8 +65,8 @@ static void	rev_rotate_a(t_vec *a, t_vec *b, t_sort *info)
 	}
 	else if (info->push_cost_a == info->push_cost_b)
 		while (info->push_cost_a-- > 0 && info->push_cost_b-- > 0)
-			rrr(a, b);
-	pa(a, b);
+			rrr(a, b, false);
+	pa(a, b, false);
 }
 
 static void	mix_rotate_a(t_vec *a, t_vec *b, t_sort *info)
@@ -77,7 +77,7 @@ static void	mix_rotate_a(t_vec *a, t_vec *b, t_sort *info)
 			ra(a, false);
 		while (info->push_cost_b-- > 0)
 			rrb(b, false);
-		pa(a, b);
+		pa(a, b, false);
 	}
 	else if (info->above_median_a == false && info->above_median_b == true)
 	{
@@ -85,7 +85,7 @@ static void	mix_rotate_a(t_vec *a, t_vec *b, t_sort *info)
 			rra(a, false);
 		while (info->push_cost_b-- > 0)
 			rb(b, false);
-		pa(a, b);
+		pa(a, b, false);
 	}
 }
 

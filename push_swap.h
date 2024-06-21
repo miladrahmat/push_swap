@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:18:18 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/19 13:35:58 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:36:43 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ typedef struct s_sort
 //commands
 void	sa(t_vec *a, bool check);
 void	sb(t_vec *b, bool check);
-void	ss(t_vec *a, t_vec *b);
-void	pa(t_vec *a, t_vec *b);
-void	pb(t_vec *a, t_vec *b);
+void	ss(t_vec *a, t_vec *b, bool check);
+void	pa(t_vec *a, t_vec *b, bool check);
+void	pb(t_vec *a, t_vec *b, bool check);
 void	ra(t_vec *a, bool check);
 void	rb(t_vec *b, bool check);
-void	rr(t_vec *a, t_vec *b);
+void	rr(t_vec *a, t_vec *b, bool check);
 void	rra(t_vec *a, bool check);
 void	rrb(t_vec *b, bool check);
-void	rrr(t_vec *a, t_vec *b);
+void	rrr(t_vec *a, t_vec *b, bool check);
 
 //error check
 int		check_args(char **args, t_vec *a, size_t index);
