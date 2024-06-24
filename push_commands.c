@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:26:18 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/21 17:38:16 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:38:04 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	pb(t_vec *a, t_vec *b, bool check)
 		return ;
 	if (vec_insert(b, ind0ptr, 0) < 0)
 		return ;
-	if (check == false)	
+	if (check == false)
 		ft_printf("pb\n");
 }
 

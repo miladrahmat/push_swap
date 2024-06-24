@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:18:18 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/21 17:36:43 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:54:46 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ int		find_biggest_nbr(t_vec *vec);
 void	get_info_b(t_vec *a, t_vec *b, t_sort *info);
 void	get_info_a(t_vec *a, t_vec *b, t_sort *info);
 void	reset_info(t_sort *info);
+int		check_errors(int argc, char **argv, t_vec *a);
+void	split_free(char **arr);
 
 #endif

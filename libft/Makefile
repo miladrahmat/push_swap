@@ -21,18 +21,18 @@ all: $(NAME)
 #The $@ means the filename representing the target (NAME)
 #The $? means the names of all the files? (if I understood correctly)
 $(NAME): $(OBJECTS)
-		ar rcs $@ $?
+	@ar rcs $@ $?
 bonus: .bonus
 .bonus: $(OBJECTS) $(BOBJECTS)
-	ar rcs $(NAME) $(OBJECTS) $(BOBJECTS)
+	@ar rcs $(NAME) $(OBJECTS) $(BOBJECTS)
 	@touch .bonus
 %.o: %.c
-		$(CC) -c $(CFLAGS) $?
+	@$(CC) -c $(CFLAGS) $?
 clean:
-		rm -f $(OBJECTS) $(BOBJECTS)
-		rm -f .bonus
+	@rm -f $(OBJECTS) $(BOBJECTS)
+	@rm -f .bonus
 fclean: clean
-		rm -f $(NAME)
+	@rm -f $(NAME)
 re: fclean all
 
 .PHONY: all clean fclean re bonus

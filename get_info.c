@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:41:44 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/21 15:31:19 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:40:01 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static void	calculate_cost(t_vec *a, t_vec *b, t_sort *info)
 		info->temp_cost_b = info->temp_ind_b;
 	else if (info->temp_ind_b > median_b)
 		info->temp_cost_b = b->len - info->temp_ind_b;
-	if (info->temp_cost_a == info->temp_cost_b)
-		info->temp_total = info->temp_cost_a;
-	else if ((info->temp_ind_a <= median_a && info->temp_ind_b <= median_b) \
+	if ((info->temp_ind_a <= median_a && info->temp_ind_b <= median_b) \
 		|| (info->temp_ind_a > median_a && info->temp_ind_b > median_b))
 	{
-		if (info->temp_cost_a > info->temp_cost_b)
+		if (info->temp_cost_a == info->temp_cost_b)
+			info->temp_total = info->temp_cost_a;
+		else if (info->temp_cost_a > info->temp_cost_b)
 			info->temp_total = info->temp_cost_a;
 		else
 			info->temp_total = info->temp_cost_b;

@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:35:43 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/20 14:03:36 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:54:50 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,46 @@ int	check_args(char **args, t_vec *a, size_t index)
 			return (-1);
 		index++;
 	}
+	return (1);
+}
+
+void	split_free(char **arr)
+{
+	size_t	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
+int	check_errors(int argc, char **argv, t_vec *a)
+{
+	char	**arr;
+
+	if (argc < 2)
+		return (-1);
+	if (argv[1][0] == '\0')
+	{
+		ft_putendl_fd("Error", 2);
+		return (-1);
+	}
+	else if (argc == 2)
+	{
+		arr = ft_split(argv[1], ' ');
+		if (arr == NULL)
+			return (-1);
+		else if (check_args(arr, a, 0) < 0)
+		{
+			split_free(arr);
+			return (-1);
+		}
+		split_free(arr);
+	}
+	else if (check_args(argv, a, 1) < 0)
+		return (-1);
 	return (1);
 }
