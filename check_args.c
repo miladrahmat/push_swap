@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:35:43 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/24 17:04:41 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:03:10 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,14 @@ int	check_args(char **args, t_vec *a, size_t index)
 		{
 			if (((args[index][0] < '0' || args[index][0] > '9') \
 				&& (args[index][0] != '+' && args[index][0] != '-')) \
-					|| ((args[index][0] == '+' || args[index][0] == '-')\
+					|| ((args[index][0] == '+' || args[index][0] == '-') \
 						&& len == 1) || ((args[index][w_i] < '0' || \
 							args[index][w_i] > '9') && w_i != 0))
 			{
 				ft_putendl_fd("Error", 2);
 				return (-1);
 			}
-			else
-				w_i++;
+			w_i++;
 		}
 		if (put_to_vector(args[index], a) < 0)
 			return (-1);

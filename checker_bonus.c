@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 16:45:06 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/24 15:01:14 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:06:02 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,27 @@ static int	is_sorted_checker(t_vec *a, t_vec *b)
 
 static int	exec_command(t_vec *a, t_vec *b, char *res)
 {
-	if (ft_strncmp(res, "ra\n", ft_strlen(res)) == 0)
+	if (ft_strncmp(res, "ra\n", 3) == 0 && a->len > 0)
 		ra(a, true);
-	else if (ft_strncmp(res, "rb\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "rb\n", 3) == 0 && b->len > 0)
 		rb(b, true);
-	else if (ft_strncmp(res, "rra\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "rra\n", 4) == 0 && a->len > 0)
 		rra(a, true);
-	else if (ft_strncmp(res, "rrb\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "rrb\n", 4) == 0 && b->len > 0)
 		rrb(b, true);
-	else if (ft_strncmp(res, "rr\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "rr\n", 3) == 0 && a->len > 0 && b->len > 0)
 		rr(a, b, true);
-	else if (ft_strncmp(res, "rrr\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "rrr\n", 4) == 0 && a->len > 0 && b->len > 0)
 		rrr(a, b, true);
-	else if (ft_strncmp(res, "pa\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "pa\n", 3) == 0 && b->len > 0)
 		pa(a, b, true);
-	else if (ft_strncmp(res, "pb\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "pb\n", 3) == 0 && a->len > 0)
 		pb(a, b, true);
-	else if (ft_strncmp(res, "sa\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "sa\n", 3) == 0 && a->len > 0)
 		sa(a, true);
-	else if (ft_strncmp(res, "sb\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "sb\n", 3) == 0 && b->len > 0)
 		sb(b, true);
-	else if (ft_strncmp(res, "ss\n", ft_strlen(res)) == 0)
+	else if (ft_strncmp(res, "ss\n", 3) == 0 && a->len > 0 && b->len > 0)
 		ss(a, b, true);
 	else
 		return (-1);
