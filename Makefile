@@ -21,13 +21,13 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-$(LIBFT):
-	@make -C libft
-
 bonus: $(BNAME)
 
-$(BNAME): $(BOBJS)
-	@$(CC) $(CFLAGS) -g $(BOBJS) $(LIBFT) -o $(BNAME)
+$(BNAME): $(BOBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(BOBJS) $(LIBFT) -o $(BNAME)
+
+$(LIBFT):
+	@make -C libft
 
 clean:
 	@rm -fr $(OBJS) $(BOBJS)

@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 16:45:42 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/24 14:24:03 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/25 13:17:26 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CHECKER_BONUS_H
 # include "./libft/libft.h"
 # include "./libft/vector.h"
-# include "push_swap.h"
 
 void	sa(t_vec *a, bool check);
 void	sb(t_vec *b, bool check);

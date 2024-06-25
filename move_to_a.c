@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move_to_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrahmat- < mrahmat-@student.hive.fi >      +#+  +:+       +#+        */
+/*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:19:57 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/21 17:39:54 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/25 13:17:03 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	rotate_a(t_vec *a, t_vec *b, t_sort *info)
 {
