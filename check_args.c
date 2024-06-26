@@ -6,7 +6,7 @@
 /*   By: mrahmat- <mrahmat-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:35:43 by mrahmat-          #+#    #+#             */
-/*   Updated: 2024/06/24 19:03:10 by mrahmat-         ###   ########.fr       */
+/*   Updated: 2024/06/26 10:58:37 by mrahmat-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	check_errors(int argc, char **argv, t_vec *a)
 	else if (argc == 2)
 	{
 		arr = ft_split(argv[1], ' ');
-		if (arr == NULL)
+		if (arr == NULL || arr[0] == NULL)
 			return (-1);
 		else if (check_args(arr, a, 0) < 0)
 		{
