@@ -3,7 +3,7 @@
 <img src="https://github.com/miladrahmat/42-badges/blob/master/badges/push_swapm.png"><img width="144" alt="Screen Shot 2024-06-26 at 13 04 08 PM" src="https://github.com/miladrahmat/push_swap/assets/159012803/dfac9ae1-0ae6-4309-9d82-215982eafd8c">
 </p>
 <p align="center">
-<b>C program that calculates and displays on the standard output the list of instructions, that sorts the integers received as arguments</b>
+<b>C program that uses a sorting algorithm that calculates and displays on the standard output the list of instructions and sorts the integers received as arguments</b>
 
 ## Content
 
