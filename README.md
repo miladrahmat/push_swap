@@ -3,7 +3,7 @@
 <img src="https://github.com/miladrahmat/42-badges/blob/master/badges/push_swapm.png"><img width="144" alt="Screen Shot 2024-06-26 at 13 04 08 PM" src="https://github.com/miladrahmat/push_swap/assets/159012803/dfac9ae1-0ae6-4309-9d82-215982eafd8c">
 </p>
 <p align="center">
-<b>C program that uses a sorting algorithm that calculates and displays on the standard output the list of instructions and sorts the integers received as arguments</b>
+<b>A C program that sorts integers from input arguments, showcasing a minimal-action sorting algorithm and displaying the sequence of operations used.</b>
 
 ## Content
 
@@ -17,7 +17,9 @@
 
 This project is about writing a program that uses an algorithm which will sort a stack of integers by using the minimal amount of actions. The learning objectives of this project are rigor, use of C and use of basic algorithms. Especially focusing on their complexity.
 
-So we have to sort the integers given as arguments, using 2 stacks and only using the pre-given actions. I decided to use vectors since it was easier for me to implement the actions that can be made. Vectors are not built-in in C, so I had to implement that for this project and hopefully I will use them in future projects too. The algorithm that I implemented is [The Turk algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97) since that was the most efficient algorithm to use for this project.
+The challenge was to sort integers provided as input using two stacks and a set of predefined operations. To facilitate this, I chose to implement the operations using vectors for ease of manipulation, despite vectors not being a built-in feature in C. This required me to create a custom vector implementation, a skill I anticipate leveraging in future projects.
+
+The algorithm that I implemented is [The Turk algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97) since that was the most efficient solution for this specific project.
 
 ## Actions
 
