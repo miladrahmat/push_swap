@@ -9,7 +9,7 @@ BRCS = \
 	rotate_commands.c r_rotate_commands.c helper_funcs.c
 OBJS = $(SRCS:.c=.o)
 BOBJS = $(BRCS:.c=.o)
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = ./libft/libft.a
 
